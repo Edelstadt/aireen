@@ -1,0 +1,57 @@
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="name">
+    <input type="hidden" name="queue1" value="{% for user in queue1 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue2" value="{% for user in queue2 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue3" value="{% for user in queue3 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="add" value="true">
+
+    <input type="submit" value="Start">
+</form>
+  <br>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="queue1" value="{% for user in queue1 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue2" value="{% for user in queue2 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue3" value="{% for user in queue3 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue1-remove" value="true">
+
+    {% for user in queue1 %}
+        {{ user }}
+    {% endfor %}
+    <input type="submit" value="Odebrat">
+</form>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="queue1" value="{% for user in queue1 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue2" value="{% for user in queue2 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue3" value="{% for user in queue3 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue2-remove" value="true">
+
+    {% for user in queue2 %}
+        {{ user }}
+    {% endfor %}
+    <input type="submit" value="Odebrat">
+</form>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="queue1" value="{% for user in queue1 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue2" value="{% for user in queue2 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue3" value="{% for user in queue3 %}{{ user }} {% endfor %}">
+    <input type="hidden" name="queue3-remove" value="true">
+
+    {% for user in queue3 %}
+        {{ user }}
+    {% endfor %}
+
+    <input type="submit" value="Odebrat">
+</form>
